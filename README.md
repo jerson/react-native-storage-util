@@ -34,9 +34,9 @@ info about free space and external devices, only for **Android**
 ```javascript
 import StorageUtil from 'react-native-storage-util';
 
-StorageUtil.getAll()
-StorageUtil.getLocations()
-StorageUtil.getFreeSpace(path)
-StorageUtil.getTotalSpace(path) 
+StorageUtil.getAll();
+StorageUtil.getLocations();
+StorageUtil.getFreeSpace(path);
+StorageUtil.getTotalSpace(path); 
 ```
   
