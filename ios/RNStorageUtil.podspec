@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.summary      = "RNStorageUtil"
   s.description  = <<-DESC
-                  info about free space and external devices, only for **Android**
+                  Info about free space and external devices, only for **Android**
                    DESC
   s.homepage     = "https://github.com/jerson/react-native-storage-util"
   s.license      = "MIT"
