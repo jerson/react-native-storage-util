@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 public class StorageUtils {
 
     private static final String TAG = "StorageUtils";
-∫
+    
     public static List<StorageInfo> getStorageList() {
 
         List<StorageInfo> list = new ArrayList<StorageInfo>();
