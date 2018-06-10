@@ -78,7 +78,7 @@ public class RNStorageUtilModule extends ReactContextBaseJavaModule {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       List<String> results = new ArrayList<String>();
-      File[] externalDirs = context.getExternalFilesDirs(null);
+      File[] externalDirs = reactContext.getExternalFilesDirs(null);
       for (File file : externalDirs) {
         String path = file.getPath().split("/Android")[0];
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Environment.isExternalStorageRemovable(file))
