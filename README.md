@@ -1,6 +1,8 @@
 
 # react-native-storage-util
 
+info about free space and external devices, only for **Android**
+
 ## Getting started
 
 `$ npm install react-native-storage-util --save`
@@ -11,13 +13,6 @@
 
 ### Manual installation
 
-
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-storage-util` and add `RNStorageUtil.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNStorageUtil.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
 
 #### Android
 
@@ -37,9 +32,11 @@
 
 ## Usage
 ```javascript
-import RNStorageUtil from 'react-native-storage-util';
+import StorageUtil from 'react-native-storage-util';
 
-// TODO: What to do with the module?
-RNStorageUtil;
+StorageUtil.getAll()
+StorageUtil.getLocations()
+StorageUtil.getFreeSpace(path)
+StorageUtil.getTotalSpace(path) 
 ```
   
