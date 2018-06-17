@@ -5,28 +5,33 @@ const { RNStorageUtil } = NativeModules;
 const TAG = "[StorageUtil]";
 
 export default class StorageUtil {
-  static getAll() {
+  static async getAll() {
     __DEV__ && console.debug(TAG, "getAll");
     if (Platform.OS !== "android") {
       __DEV__ && console.warn(TAG, "not supported on", Platform.OS);
       return;
     }
-    return this.getLocations().then(locations => {
-      let locationsKeys = Object.keys(locations);
-      return Promise.mapSeries(locationsKeys, key => {
-        let path = locations[key];
-        return this.getFreeSpace(path).then(freeSpace => {
-          return this.getTotalSpace(path).then(totalSpace => {
-            return {
-              path,
-              key,
-              totalSpace: Math.abs(totalSpace),
-              freeSpace: Math.abs(freeSpace)
-            };
-          });
+
+    let all = [];
+    try {
+      const locations = await this.getLocations();
+      const locationsKeys = Object.keys(locations);
+      for (const key of locationsKeys) {
+        const path = locations[key];
+        const freeSpace = Math.abs(await this.getFreeSpace(path));
+        const totalSpace = Math.abs(await this.getTotalSpace(path));
+        all.push({
+          path,
+          key,
+          totalSpace,
+          freeSpace
         });
-      });
-    });
+      }
+    } catch (e) {
+      __DEV__ && console.warn(TAG, "getAll", e);
+    }
+
+    return all;
   }
 
   static getLocations() {
